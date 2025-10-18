@@ -1,17 +1,20 @@
-// /app/protected/page.js
-import { cookies } from "next/headers";
-import { verifyJWT } from "@/lib/auth";
+"use client";
+
+import { useSession, signOut } from "next-auth/react";
 import Link from "next/link";
 
-export default async function ProtectedPage() {
-  const token = cookies().get("token")?.value;
-  const user = token ? await verifyJWT(token) : null;
+export default function ProtectedPage() {
+  const { data: session, status } = useSession();
 
-  if (!user) {
+  if (status === "loading") {
+    return <p style={{ textAlign: "center" }}>Loading...</p>;
+  }
+
+  if (status === "unauthenticated") {
     return (
       <main style={{ textAlign: "center", marginTop: "50px" }}>
-        <h2>Access Denied 🚫</h2>
-        <p>You must log in to view this page.</p>
+        <h2>Access Denied </h2>
+        <p>You need to log in to access this page.</p>
         <Link href="/login">Go to Login</Link>
       </main>
     );
@@ -19,23 +22,27 @@ export default async function ProtectedPage() {
 
   return (
     <main style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>Welcome, {user.username}! 🎉</h2>
-      <p>This is a protected page that only logged-in users can access.</p>
-      <form action="/api/logout" method="POST">
-        <button
-          type="submit"
-          style={{
-            backgroundColor: "#e74c3c",
-            color: "white",
-            padding: "10px 20px",
-            border: "none",
-            borderRadius: "5px",
-            cursor: "pointer",
-          }}
-        >
-          Logout
-        </button>
-      </form>
+      <h2>Welcome, {session.user.name}! 🎉</h2>
+      <img
+        src={session.user.image}
+        alt="User Avatar"
+        style={{ borderRadius: "50%", width: "80px", height: "80px" }}
+      />
+      <p>Email: {session.user.email}</p>
+      <button
+        onClick={() => signOut()}
+        style={{
+          marginTop: "20px",
+          backgroundColor: "#e74c3c",
+          color: "white",
+          padding: "10px 20px",
+          border: "none",
+          borderRadius: "5px",
+          cursor: "pointer",
+        }}
+      >
+        Sign Out
+      </button>
     </main>
   );
 }
