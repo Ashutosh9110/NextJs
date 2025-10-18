@@ -1,18 +1,22 @@
-// /app/products/page.js
+// /src/app/products/page.js
 import Link from "next/link";
 
-export const revalidate = 60; // ✅ Enables caching for 60 seconds
+export const metadata = {
+  title: "Products Store - Products List",
+  description: "Browse the complete list of products available in our store.",
+};
+
+export const revalidate = 60;
 
 export default async function ProductsPage() {
-  // Fetch products with caching
   const res = await fetch("https://dummyjson.com/products", { next: { revalidate: 60 } });
   const data = await res.json();
   const products = data.products || [];
 
   return (
     <main style={{ textAlign: "center", marginTop: "50px" }}>
-      <h2>🛒 Products Page</h2>
-      <p>Browse our latest products below:</p>
+      <h2>🛍️ Products List</h2>
+      <p>This page uses <strong>static metadata</strong>.</p>
 
       <ul style={{ listStyle: "none", padding: 0 }}>
         {products.map((product) => (
