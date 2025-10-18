@@ -1,5 +1,6 @@
 // /app/layout.js
 import Link from "next/link";
+import Image from "next/image";
 import "./globals.css";
 
 export const metadata = {
@@ -25,12 +26,28 @@ export default function RootLayout({ children }) {
           style={{
             backgroundColor: "#333",
             color: "white",
-            textAlign: "center",
-            padding: "1rem",
+            display: "flex",
+            justifyContent: "space-between",
+            alignItems: "center",
+            padding: "1rem 2rem",
           }}
         >
-          <h1>🛍️ Products Store</h1>
-          <nav style={{ marginTop: "10px" }}>
+          {/* Logo + Title */}
+          <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
+            {/* Logo */}
+            <Image
+              src="/logo.png" // ✅ Comes from /public/logo.png
+              alt="Products Store Logo"
+              width={50}
+              height={50}
+              style={{ borderRadius: "8px" }}
+              priority
+            />
+            <h1 style={{ margin: 0 }}>🛍️ Products Store</h1>
+          </div>
+
+          {/* Navigation Links */}
+          <nav>
             <Link href="/" style={{ color: "white", margin: "0 15px" }}>
               Home
             </Link>
