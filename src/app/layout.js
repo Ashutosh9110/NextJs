@@ -43,17 +43,17 @@ export default function RootLayout({ children }) {
               style={{ borderRadius: "8px" }}
               priority
             />
-            <h1 style={{ margin: 0 }}>🛍️ Products Store</h1>
+            <h1 style={{ margin: 0 }}>Products Store</h1>
           </div>
 
           {/* Navigation Links */}
           <nav>
-            <Link href="/" style={{ color: "white", margin: "0 15px" }}>
-              Home
-            </Link>
-            <Link href="/products" style={{ color: "white", margin: "0 15px" }}>
-              Products
-            </Link>
+            <Link href="/" style={{ color: "white", margin: "0 15px" }}>Home</Link>
+            <Link href="/products" style={{ color: "white", margin: "0 15px" }}>Products</Link>
+            <Link href="/" style={{ color: "white", margin: "0 15px" }}>Home</Link>
+            <Link href="/products" style={{ color: "white", margin: "0 15px" }}>Products</Link>
+            <Link href="/protected" style={{ color: "white", margin: "0 15px" }}>Protected</Link>
+            <Link href="/login" style={{ color: "white", margin: "0 15px" }}>Login</Link>
           </nav>
         </header>
 
