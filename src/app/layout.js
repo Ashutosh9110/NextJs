@@ -1,4 +1,5 @@
 // /app/layout.js
+import Link from "next/link";
 import "./globals.css";
 
 export const metadata = {
@@ -29,7 +30,14 @@ export default function RootLayout({ children }) {
           }}
         >
           <h1>🛍️ Products Store</h1>
-          <p>Your one-stop shop for everything</p>
+          <nav style={{ marginTop: "10px" }}>
+            <Link href="/" style={{ color: "white", margin: "0 15px" }}>
+              Home
+            </Link>
+            <Link href="/products" style={{ color: "white", margin: "0 15px" }}>
+              Products
+            </Link>
+          </nav>
         </header>
 
         {/* Page Content */}

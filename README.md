@@ -2,6 +2,10 @@ This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-
 
 ## Getting Started
 
+can you help me in finding answers for the following uploaded images?
+
+
+
 First, run the development server:
 
 ```bash
