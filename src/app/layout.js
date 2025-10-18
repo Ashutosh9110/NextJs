@@ -33,6 +33,7 @@ export default function RootLayout({ children }) {
               <Link href="/login" style={{ color: "white", margin: "0 15px" }}>
                 Login
               </Link>
+              <Link href="/posts/1" style={{ color: "white", margin: "0 15px" }}>Posts</Link>
             </nav>
           </header>
 
